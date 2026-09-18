@@ -144,7 +144,7 @@ export default function App() {
         <header className="masthead">
           <div>
             <span className="eyebrow">Built for job seekers, not ATS games</span>
-            <h1>Resume, <span className="mark">tailored</span>.</h1>
+            <h1>Tailor Your<span className="mark">Resume</span></h1>
             <p>Upload your resume, paste the job description, and get a version tailored to the role — while staying true to your experience.</p>
             <span className="sticker sticker-blue">Privacy first.
 No signup, Just upload</span>
