@@ -1,0 +1,31 @@
+# dependencies
+node_modules/
+
+# production build output
+/dist/
+
+# Vite cache
+.vite/
+.vite-cache/
+
+# local env files
+.env
+.env.*
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# editor / OS files
+.vscode/
+.DS_Store
+Thumbs.db
+
+# coverage / test output
+coverage/
+
+# lockfile keep if you want reproducible installs
+# package-lock.json
