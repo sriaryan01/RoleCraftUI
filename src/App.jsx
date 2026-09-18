@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown'
 
 const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:8081'
 const ACCEPTED_EXT = ['.pdf', '.docx', '.tex', '.txt', '.md']
+const JOB_DESCRIPTION_SIGNAL = /\b(role|responsibilit(?:y|ies)|requirements?|qualifications?|experience|skills?|developer|engineer|intern|position|work|build|design|develop|manage|team|candidate|knowledge|proficient|fresher)\b/i
 
 export default function App() {
   const [resumeFile, setResumeFile] = useState(null)
@@ -43,6 +44,12 @@ export default function App() {
     setDragActive(false)
   }
 
+  const isMeaningfulJobDescription = (value) => {
+    const normalized = value.trim().replace(/\s+/g, ' ')
+    const wordCount = normalized ? normalized.split(' ').length : 0
+    return normalized.length >= 30 && wordCount >= 6 && JOB_DESCRIPTION_SIGNAL.test(normalized)
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError('')
@@ -51,8 +58,8 @@ export default function App() {
       setError('Pehle apna resume file (.pdf, .docx, .tex ya .txt) choose karo.')
       return
     }
-    if (!jobDescription.trim()) {
-      setError('Job description bhi daalo.')
+    if (!isMeaningfulJobDescription(jobDescription)) {
+      setError('Please enter a meaningful job description with responsibilities, skills, experience, or role details.')
       return
     }
 
